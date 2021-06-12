@@ -9,7 +9,9 @@ module.exports = {
     entry: path.resolve(__dirname, 'src', 'index.js'),
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        chunkLoading: false,
+        wasmLoading: false,
     },
     module: {
         rules: [
@@ -41,21 +43,25 @@ module.exports = {
                             importLoaders: true,
                             sourceMap: true
                         }
-                    }
-                ]
-            },
-            {
-                test: /\.scss$/,
-                use: [
-                    { loader: 'style-loader' },
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            sourceMap: true,
-                            import: true,
-                            importLoaders: true,
-                        }
                     },
+                    // {
+                    //     loader: "postcss-loader",
+                    //     options: {
+                    //     config: {
+                    //         path: path.resolve(__dirname, 'postcss.cofig.js'),
+                    //     },
+                    //     postcssOptions: {
+                    //         plugins: [
+                    //         [
+                    //             "postcss-preset-env",
+                    //             {
+                    //               // Options
+                    //             },
+                    //         ],
+                    //         ],
+                    //     },
+                    //     },
+                    // },
                 ]
             },
             {

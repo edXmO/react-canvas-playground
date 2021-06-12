@@ -6,12 +6,14 @@
 ## Objective
 
 - This project was built for learning purposes.
-- Mainly learn Canvas API.
+- Deeply learn Canvas API.
+- Learn and implement Storybook.js
 
 ## Stack
 
 - Javascript (ES6)
 - React
+- Storybook
 - Styled Components
 - Jest - Coming Soon
 - Webpack

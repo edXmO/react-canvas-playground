@@ -1,7 +1,9 @@
 import React from "react";
+import MainNavigation from './containers/MainNavigation';
 
 const App = () => {
-    return <div >Application</div>
+
+    return (<MainNavigation />)
 }
 
 export default App;
