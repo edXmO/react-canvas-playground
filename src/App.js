@@ -2,7 +2,7 @@ import React from "react";
 import '../sass/main.scss';
 
 const App = () => {
-    return console.log('App')
+    return <div>App</div>
 }
 
 export default App;
