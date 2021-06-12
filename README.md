@@ -5,13 +5,13 @@
 
 ## Objective
 
-- This project was built for learning purposes. 
+- This project was built for learning purposes.
 - Mainly learn Canvas API.
 
 ## Stack
 
 - Javascript (ES6)
 - React
-- Sass
+- Styled Components
 - Jest - Coming Soon
 - Webpack

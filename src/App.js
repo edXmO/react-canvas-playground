@@ -1,8 +1,7 @@
 import React from "react";
-import '../sass/main.scss';
 
 const App = () => {
-    return <div>App</div>
+    return <div >Application</div>
 }
 
 export default App;

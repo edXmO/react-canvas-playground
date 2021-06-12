@@ -56,13 +56,6 @@ module.exports = {
                             importLoaders: true,
                         }
                     },
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            sourceMap: true,
-                            implementation: require('node-sass')
-                        }
-                    }
                 ]
             },
             {
@@ -72,26 +65,19 @@ module.exports = {
         ]
     },
     plugins: [
+        new CssMinimizerPlugin(),
         new CleanWebpackPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new MiniCssExtractPlugin({
             filename: '[name].bundle.css',
             chunkFilename: '[id].css'
         }),
-        new CopyWebpackPlugin({
-            patterns: [
-                {
-                    from: 'public/manifest.json', to: 'manifest.json'
-                },
-                {
-                    from: 'src/assets', to: 'images'
-                },
-            ]
-        }),
+        // new CopyWebpackPlugin({
+        //     patterns: [
+        //         {
+        //             from: 'src/assets', to: 'images'
+        //         },
+        //     ]
+        // }),
     ],
-    optimizations: {
-        minimizer: [
-            new CssMinimizerPlugin()
-        ]
-    }
 }
