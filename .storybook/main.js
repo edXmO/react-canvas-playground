@@ -1,8 +1,6 @@
-
 module.exports = {
   "stories": [
-    "../src/stories/*.stories.mdx",
-    "../src/stories/*.stories.@(js|jsx|ts|tsx)"
+    "./src/stories/*.stories.js",
   ],
   "addons": [
     "@storybook/addon-links",
@@ -11,8 +9,5 @@ module.exports = {
   ],
   "core": {
     "builder": "webpack5",
-  }
-  // webpackFinal: (config) => {
-  //   return { ...config, module: { ...config.module, rules: custom.module.rules } };
-  // },
+  },
 }
