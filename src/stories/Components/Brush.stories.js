@@ -11,11 +11,11 @@ const Template = (args) => <Brush {...args} />
 
 export const Default = Template.bind({});
 Default.args = {
-  brush: {
+    brush: {
         type: 0,
         label: "",      
         selected: false
-  }
+    }
 };
 
 export const Selected = Template.bind({});
