@@ -2,6 +2,7 @@ import React, { useReducer } from "react";
 import ThemeContext from "../context/ThemeContext";
 import CanvasContainer from "../components/Canvas";
 import styled from "styled-components";
+import GlobalStyles from "../components/GlobalStyles";
 
 const AppWrapper = styled.div`
     margin: 0;
@@ -18,10 +19,10 @@ const MainNavigation = () => {
 
     const [theme, dispatchTheme] = useReducer(ThemeContext, null);
 
-
     return (
         <ThemeContext.Provider value={{ theme, dispatchTheme }}>
             <AppWrapper>
+                <GlobalStyles />
                 <CanvasContainer />
             </AppWrapper>
         </ThemeContext.Provider>

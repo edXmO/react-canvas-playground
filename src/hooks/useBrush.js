@@ -1,30 +1,44 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 
 const useBrush = () => {
 
-    const [ brushType, setBrushType ] = useState({})
+    const [brushType, setBrushType ] = useState({ lineCap: "round", strokeStyle: "black", lineWidth: 0.2 })
+    const [isDrawing, setIsDrawing ] = useState(false);
+    const [canvasContext, setCanvasContext] = useState(null);
 
-    // Para pintar necesito el contexto del canvas
+    const startDrawing = ({nativeEvent}) => {
+        const { clientX, clientY } = nativeEvent;
 
-    useEffect(() => {
-        window.addEventListener('mousedown', (e) => {
-            const canvas = document.querySelector('#canvas');
-            const ctx = canvas.getContext('2d');
-            
-            // Empiezo a pintar
-            ctx.lineCap = "round";
-            ctx.strokeStyle = "black"
-            ctx.lineWidth = 5;
+        console.log(nativeEvent);
+        canvasContext.lineCap = brushType.lineCap;
+        canvasContext.strokeStyle = brushType.strokeStyle;
+        canvasContext.lineWidth = brushType.lineWidth;
+        canvasContext.beginPath();
+        canvasContext.moveTo(clientX, clientY);
+        setIsDrawing(true);
+    }
 
-            ctx.beginPath();
-            ctx.lineTo(e.clientX, e.clientY);
-            // On mouse down we should be able to paint
-        });
+    const stopDrawing = () => {
+        setIsDrawing(false);
+        canvasContext.closePath();
+    }
 
-        // Unsubscribe
-        return () => window.removeEventListener('mousedown');
-    }, [])
+    const draw = ({nativeEvent}) => {
+        if(!isDrawing){
+            return;
+        }
+        const { clientX, clientY } = nativeEvent;
+        canvasContext.lineTo( clientX, clientY );
+        canvasContext.stroke(); 
+    }
 
+    return {
+        startDrawing, 
+        stopDrawing,
+        draw,
+        setBrushType,
+        setCanvasContext
+    }
 }
 
 export default useBrush;

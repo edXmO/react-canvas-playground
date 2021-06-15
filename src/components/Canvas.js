@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from 'styled-components';
+import useBrush from "../hooks/useBrush";
 
 const Canvas = styled.canvas`
     width: 1200px;
@@ -9,11 +10,20 @@ const Canvas = styled.canvas`
 
 const CanvasContainer  = () => {
 
-    const canvRef = useRef(null);
-
+    const { startDrawing, stopDrawing , draw, setCanvasContext } = useBrush();
     
+    const canvasRef = useRef(null);
 
-    return <Canvas id="canvas" ref={canvasRef} />
+    useEffect(() => {
+        setCanvasContext(canvasRef.current.getContext('2d'))
+    }, []);
+
+    return <Canvas 
+                onMouseDown={startDrawing} 
+                onMouseUp={stopDrawing}
+                onMouseMove={draw}
+                ref={canvasRef} 
+            />
 }
 
 
