@@ -1,8 +1,11 @@
 import React, { useReducer } from "react";
 import ThemeContext from "../context/ThemeContext";
-import CanvasContainer from "../components/Canvas";
 import styled from "styled-components";
 import GlobalStyles from "../components/GlobalStyles";
+
+// Components
+import CanvasContainer from "../components/Canvas";
+import MenuHeader from "./MenuHeader";
 
 const AppWrapper = styled.div`
     margin: 0;
@@ -10,9 +13,6 @@ const AppWrapper = styled.div`
     box-sizing: border-box;
     height: 100vh;
     background-color: royalblue;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 `
 
 const MainNavigation = () => {
@@ -23,7 +23,8 @@ const MainNavigation = () => {
         <ThemeContext.Provider value={{ theme, dispatchTheme }}>
             <AppWrapper>
                 <GlobalStyles />
-                <CanvasContainer />
+                <MenuHeader theme={ theme } dispatchTheme={ dispatchTheme }/>
+                {/* <CanvasContainer theme={ theme } /> */}
             </AppWrapper>
         </ThemeContext.Provider>
     )

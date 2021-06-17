@@ -2,17 +2,19 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-const Brush = styled.div`
+const Brush = styled.button`
     display: flex;
+    width: 150px;
+    height: 60px;
     align-items: center;
     justify-content: center;
-    background: ${selected ? "white" : "royalblue"};
+    background: ${props => props.selected ? "violet" : "royalblue"};
 `
 const BrushLabel = styled.p`
     flex: 1;
     text-align: center;
     font-size: 16;
-    color: ${selected ? "royalblue" : "white"};
+    color: ${props => props.selected ? "royalblue" : "white"};
 `
 const BrushImage = styled.img`
     resize-mode: contain,
@@ -20,20 +22,28 @@ const BrushImage = styled.img`
     width: 100%,
     height: 100%
 `
+const MockBrushImg = styled.div`
+    heigth: 40,
+    width: 40,
+    border-radius: 50%;
+    background-color: white;
+`
 
-const BrushButton = ({type, label, selected}) => {
+
+const BrushItem = ({type, label, selected}) => {
     return (
         <Brush>
-            <BrushImage alt="No image yet"/>
+            <MockBrushImg />
+            {/* <BrushImage alt="No image yet"/> */}
             <BrushLabel>{label}</BrushLabel>
         </Brush>
     )
 }
 
-export default Brush;
+export default BrushItem;
 
 Brush.propTypes = {
-    type: PropTypes.string,
+    type: PropTypes.number,
     label: PropTypes.string,
     selected: PropTypes.bool
 }

@@ -1,6 +1,5 @@
 import React from "react";
-
-import Brush from "../../components/Brush";
+import Brush from "../components/Brush";
 
 export default {
     component: "Brush",

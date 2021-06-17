@@ -2,14 +2,17 @@ import { useState } from "react";
 
 const useBrush = () => {
 
-    const [brushType, setBrushType ] = useState({ lineCap: "round", strokeStyle: "black", lineWidth: 0.2 })
+    const [brushType, setBrushType ] = useState({ 
+        lineCap: "round", // posibles valores: butt / round / square
+        strokeStyle: "black",
+        lineWidth: 1 
+    });
     const [isDrawing, setIsDrawing ] = useState(false);
     const [canvasContext, setCanvasContext] = useState(null);
 
     const startDrawing = ({nativeEvent}) => {
         const { clientX, clientY } = nativeEvent;
 
-        console.log(nativeEvent);
         canvasContext.lineCap = brushType.lineCap;
         canvasContext.strokeStyle = brushType.strokeStyle;
         canvasContext.lineWidth = brushType.lineWidth;
@@ -28,7 +31,7 @@ const useBrush = () => {
             return;
         }
         const { clientX, clientY } = nativeEvent;
-        canvasContext.lineTo( clientX, clientY );
+        canvasContext.lineTo(clientX, clientY);
         canvasContext.stroke(); 
     }
 
